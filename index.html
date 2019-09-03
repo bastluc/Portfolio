@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/master.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <title>Bastien LUCAS - Portfolio</title>
+  </head>
+  <body>
+    <section class="productions-container">
+      <div class="productions">
+        <a href="" class="production-item">Nicolas Chagnon</a>
+        <a href="" class="production-item">Dotwist</a>
+        <a href="" class="production-item">Tank Survivor</a>
+        <a href="" class="production-item">Live Score</a>
+        <a href="" class="production-item">C2L</a>
+      </div>
+    </section>
+    <div class="images-container">
+      <img src="images/nico-chagnon.png" alt="">
+      <img src="images/dotwist.png" alt="">
+      <img src="images/tank.png" alt="">
+      <img src="images/tennis.png" alt="">
+      <img src="images/c2l.png" alt="">
+    </div>
+    <script type="text/javascript">
+      var mouseY;
+      var showedPicture = 0;
+      $( document ).on( "mousemove", function( event ) {
+        if(event.pageY){
+          var topValue = $(".productions").css("top");
+          topValue = topValue.substring(0, topValue.length-2);
+          $(".productions").css("top", "-" + event.pageY*0.3 + "px");
+        }
+        //console.log( "pageX: " + event.pageX + ", pageY: " + event.pageY );
+      });
+      $(".production-item").hover(function(){
+        $(".images-container > img").eq(showedPicture).css("opacity", "0");
+        $(".images-container > img").eq($(this).index()).css("opacity", "0.8");
+        showedPicture = $(this).index();
+      });
+    </script>
+  </body>
+</html>
